@@ -39,7 +39,7 @@ docker-compose up --build
 
 ## Contribuir
 
-Para contribuir com esse projeto é importante seguir nosso [Guia de Contribuição](https://github.com/fga-eps-mds/2024.2-ARANDU-DOC/blob/main/docs/guias/guia_de_contribuicao.md) do repositório e seguir nosso [Código de Conduta](https://github.com/fga-eps-mds/2024.2-ARANDU-DOC/blob/main/CODE_OF_CONDUCT.md).
+Para contribuir com esse projeto é importante seguir nosso [Guia de Contribuição](https://fga-eps-mds.github.io/2024.2-ARANDU-DOC/guias/guia_de_contribuicao/) do repositório e seguir nosso [Código de Conduta](https://github.com/fga-eps-mds/2024.2-ARANDU-DOC/blob/main/CODE_OF_CONDUCT.md).
 
 ## Ambientes
 
