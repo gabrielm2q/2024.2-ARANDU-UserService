@@ -22,7 +22,7 @@ RUN npm run build
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV=production
+ENV NODE_ENV=development
 
 RUN addgroup -g 1001 -S nodejs \
   && adduser -S arandu -u 1001
