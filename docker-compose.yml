@@ -12,7 +12,41 @@ services:
       - "3000:3000"
     networks:
       - arandu-network
+  
+  mongo:
+    image: mongo
+    restart: always
+    env_file:
+      - .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    ports:
+      - "27017:27017"
+    command: ["--quiet"]
+    networks:
+      - arandu-network
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    env_file:
+      - .env
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${ME_CONFIG_MONGODB_ADMINUSERNAME}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${ME_CONFIG_MONGODB_ADMINPASSWORD}
+      ME_CONFIG_MONGODB_URL: ${MONGODB_URI}
+      ME_CONFIG_BASICAUTH: ${ME_CONFIG_BASICAUTH}
+      ME_CONFIG_BASICAUTH_USERNAME: ${ME_CONFIG_BASICAUTH_USERNAME}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${ME_CONFIG_BASICAUTH_PASSWORD}
+    ports:
+      - "8081:8081"
+    networks:
+      - arandu-network
+    depends_on:
+      - mongo
 
 networks:
   arandu-network:
+    name: arandu-network
     driver: bridge
