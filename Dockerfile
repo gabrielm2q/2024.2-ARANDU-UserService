@@ -10,6 +10,7 @@ RUN \
   if [ -f package-lock.json ]; then npm ci; \
   fi
 
+
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
@@ -21,13 +22,14 @@ RUN npm run build
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 RUN addgroup -g 1001 -S nodejs \
   && adduser -S arandu -u 1001
 
 COPY --chown=arandu:nodejs --from=builder /app/dist ./dist
 COPY --chown=arandu:nodejs --from=builder /app/node_modules ./node_modules
+COPY --chown=arandu:nodejs --from=builder /app/.env ./.env
 
 USER arandu
 
