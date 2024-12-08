@@ -24,7 +24,7 @@ ENV NODE_ENV=production
 RUN addgroup -g 1001 -S nodejs \
   && adduser -S arandu -u 1001
 
-COPY --from=builder --chown=arandu:nodejs /app/node_modules ./node_modules
+COPY --from=builder --chown=arandu:nodejs /src/node_modules ./node_modules
 
 USER arandu
 
