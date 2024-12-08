@@ -1,9 +1,8 @@
-FROM node:22-alpine AS base
+FROM node:22 AS base
 
-FROM base AS deps
-RUN apk add --no-cache libc6-compat
+WORKDIR /src
 
-WORKDIR /app
+RUN npm install nodemon --save-dev
 
 COPY package.json package-lock.json* ./
 RUN \
@@ -11,7 +10,7 @@ RUN \
   fi
 
 FROM base AS builder
-WORKDIR /app
+WORKDIR /src
 RUN npm install
 COPY . .
 
